@@ -12,6 +12,7 @@ using NPGeekEF.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NPGeekEF.Models;
 
 namespace NPGeekEF
 {
@@ -27,11 +28,16 @@ namespace NPGeekEF
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Use Later to Add Users
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("Default")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // Add dependency injection for DbContext
+            services.AddDbContext<NpGeekContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
