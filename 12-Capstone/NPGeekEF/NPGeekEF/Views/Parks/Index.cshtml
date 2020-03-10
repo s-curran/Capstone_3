@@ -1,7 +1,17 @@
-﻿
+﻿@model IList<Park>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@foreach(Park park in Model)
+{
+    <div>
+        <img src="~/img/parks/@(park.ParkCode).jpg"/>
+        <div>
+            <h2>@park.ParkName</h2>
+            <p>@park.State</p>
+            <p>@park.ParkDescription</p>
+        </div>
+    </div>
+}
 

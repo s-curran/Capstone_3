@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NPGeekEF.Models;
+using NPGeekEF.DAL;
 
 namespace NPGeekEF
 {
@@ -37,6 +38,7 @@ namespace NPGeekEF
 
             // Add dependency injection for DbContext
             services.AddDbContext<NpGeekContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddTransient<IParksDAO, ParksEFCoreDAO>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
