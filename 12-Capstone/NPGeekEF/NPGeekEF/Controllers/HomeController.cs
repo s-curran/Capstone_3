@@ -20,7 +20,7 @@ namespace NPGeekEF.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Parks");
         }
 
         public IActionResult Privacy()
