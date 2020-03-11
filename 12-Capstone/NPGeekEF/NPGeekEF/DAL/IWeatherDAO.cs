@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace NPGeekEF.DAL
 {
-    public interface IParksDAO
+    public interface IWeatherDAO
     {
-        IList<Park> GetAllParks();
-
-        Park GetParkByCode(string parkCode);
+        IList<Weather> GetWeatherByParkCode(string parkCode);
     }
 }

@@ -4,15 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NPGeekEF.DAL;
+using NPGeekEF.Models;
 
 namespace NPGeekEF.Controllers
 {
     public class ParksController : Controller
     {
         private IParksDAO ParksDAO;
-        public ParksController(IParksDAO parksDAO)
+        private IWeatherDAO WeatherDAO;
+        public ParksController(IParksDAO parksDAO, IWeatherDAO weatherDAO)
         {
             this.ParksDAO = parksDAO;
+            this.WeatherDAO = weatherDAO;
         }
         public IActionResult Index()
         {
@@ -20,7 +23,8 @@ namespace NPGeekEF.Controllers
         }
         public IActionResult Detail(string code)
         {
-
+            Park park = ParksDAO.GetParkByCode(code);
+            park.Weather = WeatherDAO.GetWeatherByParkCode(park.ParkCode);
             return View();
         }
 

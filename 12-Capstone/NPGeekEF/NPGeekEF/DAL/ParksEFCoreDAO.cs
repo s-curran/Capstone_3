@@ -18,5 +18,10 @@ namespace NPGeekEF.DAL
         {
             return dbContext.Park.ToList();
         }
+
+        public Park GetParkByCode(string parkCode)
+        {
+            return dbContext.Park.Where(p => p.ParkCode == parkCode).SingleOrDefault();
+        }
     }
 }

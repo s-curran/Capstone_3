@@ -39,6 +39,7 @@ namespace NPGeekEF
             // Add dependency injection for DbContext
             services.AddDbContext<NpGeekContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddTransient<IParksDAO, ParksEFCoreDAO>();
+            services.AddTransient<IWeatherDAO, WeatherEFCoreDAO>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
