@@ -33,7 +33,7 @@ namespace NPGeekEF.DAL
         public Dictionary<string, int> GetSurveyResults()
         {
             Dictionary<string, int> results = new Dictionary<string, int>();
-            List<SurveyResult> rawSurveys = dbContext.SurveyResult.ToList();
+            List<SurveyResult> rawSurveys = dbContext.SurveyResult.OrderBy( s => s.ParkCode).ToList();
             foreach (SurveyResult sr in rawSurveys)
             {
                 if (results.ContainsKey(sr.ParkCode))
@@ -46,7 +46,7 @@ namespace NPGeekEF.DAL
                 }
             }
 
-            return results;
+            return results.OrderByDescending( kvp => kvp.Value).ToDictionary( kvp => kvp.Key, kvp => kvp.Value);
         }
     }
 }

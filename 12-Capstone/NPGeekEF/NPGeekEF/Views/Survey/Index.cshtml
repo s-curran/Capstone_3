@@ -26,9 +26,15 @@
         <span asp-validation-for="State" class="error"></span>
     </div>
     <div class="field-container">
-        <label class="form-label" asp-for="ActivityLevel">State of Residence: </label>
-        <select class="form-control" asp-for="ActivityLevel" asp-items="activities"></select>
-        <span asp-validation-for="State" class="error"></span>
+        @*<label class="form-label" asp-for="ActivityLevel">Activity Level: </label>
+            <select class="form-control" asp-for="ActivityLevel" asp-items="activities"></select>
+            <span asp-validation-for="State" class="error"></span>*@
+        @foreach (SelectListItem activity in activities)
+        {
+            <label class="radio-inline radio-activity" asp-for="ActivityLevel">
+                <input class="radio-inline" type="radio" asp-for="ActivityLevel" value="@activity.Text" /> @activity.Text
+            </label>
+        }
     </div>
     <div class="form-button">
         <input type="submit" value="Submit" class="btn btn-primary" />
