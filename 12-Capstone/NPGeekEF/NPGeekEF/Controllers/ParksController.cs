@@ -25,7 +25,12 @@ namespace NPGeekEF.Controllers
         {
             Park park = ParksDAO.GetParkByCode(code);
             park.Weather = WeatherDAO.GetWeatherByParkCode(park.ParkCode);
-            return View();
+
+            ParkDetailViewModel vm = new ParkDetailViewModel();
+            vm.Park = park;
+            vm.SetAlert(park);
+
+            return View(vm);
         }
 
         public IActionResult Survey()
