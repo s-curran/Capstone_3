@@ -36,10 +36,11 @@ namespace NPGeekEF
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            // Add dependency injection for DbContext
+            // Add dependency injection for DbContext and DAOs
             services.AddDbContext<NpGeekContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddTransient<IParksDAO, ParksEFCoreDAO>();
             services.AddTransient<IWeatherDAO, WeatherEFCoreDAO>();
+            services.AddTransient<ISurveyDAO, SurveyEFCoreDAO>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
