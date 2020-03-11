@@ -75,6 +75,11 @@ body {
 }
 .detail-img {
     width: 50%;
+    display:block;
+    margin:auto;
+}
+h1 {
+    text-align:center;
 }
 .detail-container {
      display: flex;
@@ -113,5 +118,16 @@ body {
      padding: 0px;
  }
  .index {
-
+     display: flex;
+     flex-wrap: wrap;
+ }
+ .index > a {
+     display: inline;
+     max-width: 50%;
+     margin: 10px;
+ }
+ .index > div {
+     display: inline;
+     max-width: 50%;
+     margin: 10px;
  }
