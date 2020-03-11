@@ -5,7 +5,7 @@
 
 @foreach (Park park in Model)
 {
-    <div>
+    <div class="index">
         <a asp-controller="Parks" asp-action="Detail" asp-route-code="@park.ParkCode"><img src="~/img/parks/@(park.ParkCode).jpg" /></a>
         <div>
             <a asp-controller="Parks" asp-action="Detail" asp-route-code="@park.ParkCode">

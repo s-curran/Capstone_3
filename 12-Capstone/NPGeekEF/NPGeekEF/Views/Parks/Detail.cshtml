@@ -3,20 +3,20 @@
     ViewData["Title"] = "Detail";
 }
 
-<img src="~/img/parks/@(Model.Park.ParkCode).jpg"/>
+<img class="detail-img" src="~/img/parks/@(Model.Park.ParkCode).jpg"/>
 <h1>@Model.Park.ParkName</h1>
 <h4>@Model.Park.State</h4>
 <div class="detail-container">
     <p>@Model.Park.ParkDescription</p>
-    <div>
+    <div class="col">
         <h6 class="detail-head">Acreage</h6>
-        <p>@Model.Park.Acreage</p>
+        <p>@($"{Model.Park.Acreage:N0}") sq. miles</p>
         <h6 class="detail-head">Elevation</h6>
-        <p>@Model.Park.ElevationInFeet</p>
+        <p>@Model.Park.ElevationInFeet ft.</p>
         <h6 class="detail-head">Miles of Trail</h6>
-        <p>@Model.Park.MilesOfTrail</p>
+        <p>@Model.Park.MilesOfTrail miles</p>
     </div>
-    <div>
+    <div class="col">
         <h6 class="detail-head">Climate</h6>
         <p>@Model.Park.Climate</p>
         <h6 class="detail-head">Number of Animal Species</h6>
@@ -24,16 +24,17 @@
         <h6 class="detail-head">Year Founded</h6>
         <p>@Model.Park.YearFounded</p>
     </div>
-    <div>
+    <div class="col">
         <h6 class="detail-head">Annual Visitors</h6>
-        <p>@Model.Park.AnnualVisitorCount</p>
+        <p>@($"{Model.Park.AnnualVisitorCount:N0}")</p>
         <h6 class="detail-head">Campsites</h6>
         <p>@Model.Park.NumberOfCampsites</p>
         <h6 class="detail-head">Entry Fee</h6>
-        <p>@Model.Park.EntryFee</p>
+        <p>@($"{Model.Park.EntryFee:C}")</p>
     </div>
-</div>
-<h1>"@Model.Park.InspirationalQuote" - @Model.Park.InspirationalQuoteSource</h1>
+</div><br/>
+<h1 class="quote">"@Model.Park.InspirationalQuote" - @Model.Park.InspirationalQuoteSource</h1>
+<br/>
 <div class="weather-container">
     @foreach (Weather day in Model.Park.Weather)
     {
