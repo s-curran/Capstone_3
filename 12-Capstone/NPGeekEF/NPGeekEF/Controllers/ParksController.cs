@@ -18,6 +18,11 @@ namespace NPGeekEF.Controllers
         {
             return View(ParksDAO.GetAllParks());
         }
+        public IActionResult Detail(string code)
+        {
+
+            return View();
+        }
 
         public IActionResult Survey()
         {
