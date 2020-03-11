@@ -1,0 +1,64 @@
+﻿@model ParkDetailViewModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<img src="~/img/parks/@(Model.Park.ParkCode).jpg"/>
+<h1>@Model.Park.ParkName</h1>
+<h4>@Model.Park.State</h4>
+<div class="detail-container">
+    <p>@Model.Park.ParkDescription</p>
+    <div>
+        <h6 class="detail-head">Acreage</h6>
+        <p>@Model.Park.Acreage</p>
+        <h6 class="detail-head">Elevation</h6>
+        <p>@Model.Park.ElevationInFeet</p>
+        <h6 class="detail-head">Miles of Trail</h6>
+        <p>@Model.Park.MilesOfTrail</p>
+    </div>
+    <div>
+        <h6 class="detail-head">Climate</h6>
+        <p>@Model.Park.Climate</p>
+        <h6 class="detail-head">Number of Animal Species</h6>
+        <p>@Model.Park.NumberOfAnimalSpecies</p>
+        <h6 class="detail-head">Year Founded</h6>
+        <p>@Model.Park.YearFounded</p>
+    </div>
+    <div>
+        <h6 class="detail-head">Annual Visitors</h6>
+        <p>@Model.Park.AnnualVisitorCount</p>
+        <h6 class="detail-head">Campsites</h6>
+        <p>@Model.Park.NumberOfCampsites</p>
+        <h6 class="detail-head">Entry Fee</h6>
+        <p>@Model.Park.EntryFee</p>
+    </div>
+</div>
+<h1>"@Model.Park.InspirationalQuote" - @Model.Park.InspirationalQuoteSource</h1>
+<div class="weather-container">
+    @foreach (Weather day in Model.Park.Weather)
+    {
+    <div class="weather-day">
+        @if (day.Forecast == "partly cloudy")
+        {
+            <img class="weather" src="~/img/weather/partlyCloudy.png" />
+        }
+        else
+        {
+            <img class="weather" src="~/img/weather/@(day.Forecast).png" />
+        }
+        <h6>High: @day.High</h6>
+        <h6>Low: @day.Low</h6>
+        <ul>
+            @if (Model.Forecast.ContainsKey(day.Forecast))
+            {
+                <li>@Model.Forecast[day.Forecast]</li>
+            }
+            @foreach (string alert in Model.TempAlert[day.FiveDayForecastValue])
+            {
+                <li>@alert</li>
+            }
+        </ul>
+    </div>
+    }
+</div>
+
