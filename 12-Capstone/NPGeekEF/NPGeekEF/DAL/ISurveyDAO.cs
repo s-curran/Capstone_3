@@ -9,5 +9,7 @@ namespace NPGeekEF.DAL
     public interface ISurveyDAO
     {
         bool AddSurveyResult(SurveyResult survey);
+
+        Dictionary<string, int> GetSurveyResults();
     }
 }

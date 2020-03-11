@@ -40,14 +40,37 @@ namespace NPGeekEF.Controllers
             vm.BuildSurveyObject();
 
             // Add Survey to DB
+            SurveyDAO.AddSurveyResult(vm.Survey);
+
             return RedirectToAction("SurveyResults");
         }
 
         public IActionResult SurveyResults()
         {
-            throw new NotImplementedException();
+            List<SurveyResultsViewModel> vm = BuildSurveyResults();
+            return View(vm);
         }
 
+        private List<SurveyResultsViewModel> BuildSurveyResults()
+        {
+            Dictionary<string, int> results = SurveyDAO.GetSurveyResults();
+            List<SurveyResultsViewModel> vmList = new List<SurveyResultsViewModel>();
+
+            foreach (KeyValuePair<string, int> kvp in results)
+            {
+                SurveyResultsViewModel vm = new SurveyResultsViewModel();
+                vm.ParkCode = kvp.Key;
+                vm.NumVotes = kvp.Value;
+
+                Park park = ParksDAO.GetParkByCode(vm.ParkCode);
+                vm.ParkName = park.ParkName;
+                vm.ParkLocation = park.State;
+                vm.ParkClimate = park.Climate;
+                vmList.Add(vm);
+            }
+
+            return vmList;
+        }
         private List<SelectListItem> parkList
         {
             get

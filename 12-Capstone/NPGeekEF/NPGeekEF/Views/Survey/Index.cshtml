@@ -1,6 +1,10 @@
 ﻿@model SurveyViewModel
 @{
     ViewData["Title"] = "Index";
+    List<SelectListItem> parks = ViewData["parks"] as List<SelectListItem>;
+    List<SelectListItem> states = ViewData["states"] as List<SelectListItem>;
+    List<SelectListItem> activities = ViewData["activities"] as List<SelectListItem>;
+
 }
 
 <h1>Daily Survey</h1>
@@ -8,7 +12,7 @@
 <form asp-controller="Survey" asp-action="Index" method="post">
     <div class="field-container">
         <label class="form-label" asp-for="ParkCode">Favorite Park: </label>
-        <select class="form-control" asp-for="ParkCode" asp-items="Model.parkCodes"></select>
+        <select class="form-control" asp-for="ParkCode" asp-items="parks"></select>
         <span asp-validation-for="ParkCode" class="error"></span>
     </div>
     <div class="field-container">
@@ -18,12 +22,12 @@
     </div>
     <div class="field-container">
         <label class="form-label" asp-for="State">State of Residence: </label>
-        <select class="form-control" asp-for="State" asp-items="Model.stateCodes"></select>
+        <select class="form-control" asp-for="State" asp-items="states"></select>
         <span asp-validation-for="State" class="error"></span>
     </div>
     <div class="field-container">
         <label class="form-label" asp-for="ActivityLevel">State of Residence: </label>
-        <select class="form-control" asp-for="ActivityLevel" asp-items="Model.activityLevels"></select>
+        <select class="form-control" asp-for="ActivityLevel" asp-items="activities"></select>
         <span asp-validation-for="State" class="error"></span>
     </div>
     <div class="form-button">

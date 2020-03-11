@@ -27,6 +27,7 @@ namespace NPGeekEF.Models
 
         public void BuildSurveyObject()
         {
+            Survey = new SurveyResult();
             Survey.ParkCode = ParkCode;
             Survey.EmailAddress = Email;
             Survey.State = State;

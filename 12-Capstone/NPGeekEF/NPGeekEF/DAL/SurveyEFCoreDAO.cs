@@ -29,5 +29,24 @@ namespace NPGeekEF.DAL
             }
 
         }
+
+        public Dictionary<string, int> GetSurveyResults()
+        {
+            Dictionary<string, int> results = new Dictionary<string, int>();
+            List<SurveyResult> rawSurveys = dbContext.SurveyResult.ToList();
+            foreach (SurveyResult sr in rawSurveys)
+            {
+                if (results.ContainsKey(sr.ParkCode))
+                {
+                    results[sr.ParkCode]++;
+                }
+                else
+                {
+                    results.Add(sr.ParkCode, 1);
+                }
+            }
+
+            return results;
+        }
     }
 }
