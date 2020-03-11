@@ -73,3 +73,45 @@ body {
     max-width: 30%;
     margin-left: 10%;
 }
+.detail-img {
+    width: 50%;
+}
+.detail-container {
+     display: flex;
+     flex-wrap: wrap;
+ }
+ .detail-container > div {
+     display: inline;
+     max-width: 32%;
+     justify-content: space-evenly;
+ }
+ .col > h6, .col > p {
+     text-align: center;
+ }
+ .quote {
+     font-style:italic;
+     text-align: center;
+ }
+ .weather-container {
+     display: flex;
+     flex-wrap: wrap;
+ }
+ .weather-container > div {
+     display: inline;
+     max-width: 20%;
+     justify-content: space-evenly;
+     padding: 0 10px;
+     text-align:center;
+ }
+ .weather {
+     max-width: 100%;
+ }
+ ul {
+     list-style-type: none;
+     list-style-position:inside;
+     margin: 0px;
+     padding: 0px;
+ }
+ .index {
+
+ }
