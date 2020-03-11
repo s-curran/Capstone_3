@@ -32,7 +32,7 @@
         @foreach (SelectListItem activity in activities)
         {
             <label class="radio-inline radio-activity" asp-for="ActivityLevel">
-                <input class="radio-inline" type="radio" asp-for="ActivityLevel" value="@activity.Text" /> @activity.Text
+                <input class="radio-inline radio-container" type="radio" asp-for="ActivityLevel" value="@activity.Text" /> @activity.Text
             </label>
         }
     </div>
