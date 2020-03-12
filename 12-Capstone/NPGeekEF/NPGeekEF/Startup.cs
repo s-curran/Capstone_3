@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NPGeekEF.Models;
 using NPGeekEF.DAL;
+using System;
 
 namespace NPGeekEF
 {
@@ -21,11 +22,25 @@ namespace NPGeekEF
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => false;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+            }
+            );
             // Add dependency injection for DbContext and DAOs
             services.AddDbContext<NpGeekContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddTransient<IParksDAO, ParksEFCoreDAO>();
             services.AddTransient<IWeatherDAO, WeatherEFCoreDAO>();
             services.AddTransient<ISurveyDAO, SurveyEFCoreDAO>();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.Cookie.HttpOnly = true;
+            }
+            );
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -50,6 +65,7 @@ namespace NPGeekEF
 
             app.UseRouting();
 
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

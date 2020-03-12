@@ -38,28 +38,51 @@
 <div class="weather-container">
     @foreach (Weather day in Model.Park.Weather)
     {
-    <div class="weather-day">
-        @if (day.Forecast == "partly cloudy")
-        {
-            <img class="weather" src="~/img/weather/partlyCloudy.png" />
-        }
-        else
-        {
-            <img class="weather" src="~/img/weather/@(day.Forecast).png" />
-        }
-        <h6>High: @day.High</h6>
-        <h6>Low: @day.Low</h6>
-        <ul>
-            @if (Model.Forecast.ContainsKey(day.Forecast))
+        <div class="weather-day">
+            @if (day.Forecast == "partly cloudy")
             {
-                <li>@Model.Forecast[day.Forecast]</li>
+                <img class="weather" src="~/img/weather/partlyCloudy.png" />
             }
-            @foreach (string alert in Model.TempAlert[day.FiveDayForecastValue])
+            else
             {
-                <li>@alert</li>
+                <img class="weather" src="~/img/weather/@(day.Forecast).png" />
             }
-        </ul>
-    </div>
+            @if (Model.IsCelsius)
+            {
+                <h6>High: @($"{((day.High - 32.00) * (5.0 / 9.0)):N2}") C</h6>
+                <h6>Low: @($"{((day.Low - 32.00) * (5.0 / 9.0)):N2}") C</h6>
+            }
+            else
+            {
+            <h6>High: @day.High F</h6>
+            <h6>Low: @day.Low F</h6>
+            }
+            <ul>
+                @if (Model.Forecast.ContainsKey(day.Forecast))
+                {
+                    <li>@Model.Forecast[day.Forecast]</li>
+                }
+                @foreach (string alert in Model.TempAlert[day.FiveDayForecastValue])
+                {
+                    <li>@alert</li>
+                }
+            </ul>
+        </div>
     }
+   
+<form asp-controller="Parks" asp-action="Detail" method="get">
+    @if (Model.IsCelsius)
+    {
+        <input type="hidden" name="code" id="code" value="@Model.Park.ParkCode"/>
+        <input type="hidden" name="tempPref" id="tempPref" value="F"/>
+        <input type="submit" value="Change to Farenheit" />
+    }
+    else
+    {
+        <input type="hidden" name="code" id="code" value="@Model.Park.ParkCode" />
+        <input type="hidden" name="tempPref" id="tempPref" value="C"/>
+        <input type="submit" value="Change to Celsius" />
+    }
+</form>
 </div>
 
