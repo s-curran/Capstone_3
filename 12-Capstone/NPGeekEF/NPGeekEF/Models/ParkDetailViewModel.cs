@@ -8,6 +8,36 @@ namespace NPGeekEF.Models
     public class ParkDetailViewModel
     {
         public Park Park { get; set; }
+
+        public bool IsCelsius { get; set; }
+
+        public List<double> ConvertedHighTemp
+        {
+            get
+            {
+                List<double> temps = new List<double>();
+                foreach (Weather day in Park.Weather)
+                {
+                    temps.Add((day.High - 32.0) * (5.0 / 9.0));
+                }
+                return temps;
+            }
+        }
+
+        public List<double> ConvertedLowTemp
+        {
+            get
+            {
+                List<double> temps = new List<double>();
+                foreach (Weather day in Park.Weather)
+                {
+                    temps.Add((day.Low - 32.0) * (5.0 / 9.0));
+                }
+                return temps;
+            }
+        }
+
+
         public IDictionary<int, List<string>> TempAlert { get; set; }
 
         public IDictionary<string, string> Forecast = new Dictionary<string, string>
@@ -22,7 +52,7 @@ namespace NPGeekEF.Models
             TempAlert = new Dictionary<int, List<string>>();
             foreach (Weather day in park.Weather)
             {
-                
+
                 List<string> alerts = new List<string>();
                 if (day.High > 75)
                 {
