@@ -16,4 +16,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\danielfries-c\module-3\11-User-Authentication\student-lecture\TE.AuthLib\TE.AuthLib\TE.AuthLib.csproj" />
+  </ItemGroup>
+
 </Project>

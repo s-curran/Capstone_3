@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NPGeekEF.Models;
+using TE.AuthLib;
 
 namespace NPGeekEF.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : NPGeekBaseController
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IAuthProvider authProvider) : base(authProvider)
         {
             _logger = logger;
         }

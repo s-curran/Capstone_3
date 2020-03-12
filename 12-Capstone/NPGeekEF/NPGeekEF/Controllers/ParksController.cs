@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NPGeekEF.DAL;
 using NPGeekEF.Models;
+using TE.AuthLib;
 
 namespace NPGeekEF.Controllers
 {
-    public class ParksController : Controller
+    public class ParksController : NPGeekBaseController
     {
         private IParksDAO ParksDAO;
         private IWeatherDAO WeatherDAO;
-        public ParksController(IParksDAO parksDAO, IWeatherDAO weatherDAO)
+        public ParksController(IParksDAO parksDAO, IWeatherDAO weatherDAO, IAuthProvider authProvider) : base(authProvider)
         {
             this.ParksDAO = parksDAO;
             this.WeatherDAO = weatherDAO;
@@ -33,10 +30,9 @@ namespace NPGeekEF.Controllers
 
             string temp = HttpContext.Session.GetString("TempChoice");
 
-            if (temp != tempPref)
-            {
-                HttpContext.Session.SetString("TempChoice", tempPref ?? temp ?? "F");
-            }
+
+            HttpContext.Session.SetString("TempChoice", tempPref ?? temp ?? "F");
+
 
             temp = HttpContext.Session.GetString("TempChoice");
 

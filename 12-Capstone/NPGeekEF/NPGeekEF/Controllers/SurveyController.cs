@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NPGeekEF.DAL;
 using NPGeekEF.Models;
+using TE.AuthLib;
 
 namespace NPGeekEF.Controllers
 {
-    public class SurveyController : Controller
+    public class SurveyController : NPGeekBaseController
     {
         private IParksDAO ParksDAO;
         private ISurveyDAO SurveyDAO;
 
-        public SurveyController(IParksDAO parksDAO, ISurveyDAO surveyDAO)
+        public SurveyController(IParksDAO parksDAO, ISurveyDAO surveyDAO, IAuthProvider authProvider) : base(authProvider)
         {
             this.ParksDAO = parksDAO;
             this.SurveyDAO = surveyDAO;

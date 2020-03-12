@@ -7,6 +7,9 @@ using Microsoft.Extensions.Hosting;
 using NPGeekEF.Models;
 using NPGeekEF.DAL;
 using System;
+using TE.AuthLib;
+using TE.AuthLib.DAL;
+using Microsoft.AspNetCore.Mvc;
 
 namespace NPGeekEF
 {
@@ -33,6 +36,19 @@ namespace NPGeekEF
             services.AddTransient<IParksDAO, ParksEFCoreDAO>();
             services.AddTransient<IWeatherDAO, WeatherEFCoreDAO>();
             services.AddTransient<ISurveyDAO, SurveyEFCoreDAO>();
+
+            // Add dependency injection for User Authentication
+            services.AddTransient<IUserDAO, UserSqlDAO>(p => new UserSqlDAO(Configuration.GetConnectionString("Default")));
+            services.AddHttpContextAccessor();
+            services.AddScoped<IAuthProvider, SessionAuthProvider>();
+
+            AuthorizeAttribute.Options = new AuthorizeAttribute.AuthorizeAttributeOptions()
+            {
+                LoginRedirectAction = "Login",
+                LoginRedirectController = "Account"
+            };
+
+            services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
