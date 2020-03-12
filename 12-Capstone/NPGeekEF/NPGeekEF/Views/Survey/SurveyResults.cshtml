@@ -10,20 +10,20 @@
         <tr>
             <th></th>
             <th>Park Name</th>
-            <th>Park Location</th>
+            <th>Location</th>
             <th>Climate</th>
-            <th>Number of Votes</th>
+            <th style="text-align:center;">Number of Votes</th>
         </tr>
     </thead>
     <tbody>
         @foreach (SurveyResultsViewModel vm in Model)
         {
             <tr>
-                <td><img src="~/img/parks/@(vm.ParkCode).jpg" /></td>
-                <td>@vm.ParkName</td>
-                <td>@vm.ParkLocation</td>
-                <td>@vm.ParkClimate</td>
-                <td>@vm.NumVotes</td>
+                <td><a asp-controller="Parks" asp-action="Detail" asp-route-code="@vm.ParkCode"><img src="~/img/parks/@(vm.ParkCode).jpg" /></a></td>
+                <td><h4>@vm.ParkName</h4></td>
+                <td><h4>@vm.ParkLocation</h4></td>
+                <td><h4>@vm.ParkClimate</h4></td>
+                <td style="text-align: center;"><h4>@vm.NumVotes</h4></td>
             </tr>
         }
     </tbody>

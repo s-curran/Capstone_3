@@ -1,6 +1,9 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+:root {
+    --gray: #6c6c6c;
+}
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -106,6 +109,7 @@ h1 {
 .quote {
     font-style: italic;
     text-align: center;
+    color: var(--gray);
 }
 
 .weather-container {
@@ -235,5 +239,34 @@ input[type="radio"] {
 form {
     display:block;
     margin: 10px auto;
-    
 }
+input.convert {
+    
+    background-color: #fff;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5%;
+    border: 5px solid var(--gray);
+}
+input.convert[type=submit] {
+    font-weight: bolder;
+    color: var(--gray);
+}
+    input.convert:hover {
+        background-color: var(--gray);
+        border: 5px solid #fff;
+    }
+    input.convert[type=submit]:hover {
+        font-weight: bolder;
+        color: #fff;
+    }
+
+    .index a {
+        text-decoration: none;
+        color: green;
+    }
+    td img {
+        
+        padding: px;
+        box-shadow: green 5px 5px;
+    }
