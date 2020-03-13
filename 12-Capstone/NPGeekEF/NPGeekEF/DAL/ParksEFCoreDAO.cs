@@ -28,7 +28,7 @@ namespace NPGeekEF.DAL
         {
             try
             {
-                dbContext.Add(park);
+                dbContext.Park.Add(park);
                 dbContext.SaveChanges();
                 return true;
             }

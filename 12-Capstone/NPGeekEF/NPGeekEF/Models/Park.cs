@@ -35,8 +35,9 @@ namespace NPGeekEF.Models
         public int YearFounded { get; set; }
         [Required(ErrorMessage = "*")]
         public int AnnualVisitorCount { get; set; }
-        
+        [Required(ErrorMessage = "*")]
         public string InspirationalQuote { get; set; }
+        [Required(ErrorMessage = "*")]
         public string InspirationalQuoteSource { get; set; }
         [Required(ErrorMessage = "*")]
         public string ParkDescription { get; set; }
