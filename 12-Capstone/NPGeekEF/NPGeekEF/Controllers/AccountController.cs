@@ -20,15 +20,17 @@ namespace NPGeekEF.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            User user = authProvider.GetCurrentUser();
-            return View(user);
+            AccountIndexViewModel vm = new AccountIndexViewModel();
+            vm.User = authProvider.GetCurrentUser();
+            return View(vm);
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult Index(User user)
+        public IActionResult Index(AccountIndexViewModel vm)
         {
-            throw new NotImplementedException();
+            vm.User = authProvider.GetCurrentUser();
+            return View(vm);
         }
 
         [HttpGet]

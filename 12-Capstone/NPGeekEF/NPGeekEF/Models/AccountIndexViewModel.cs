@@ -8,6 +8,7 @@ namespace NPGeekEF.Models
 {
     public class AccountIndexViewModel
     {
-        public string tempPref { get; set; }
+        public User User { get; set; }
+        public string TempPref { get; set; }
     }
 }
