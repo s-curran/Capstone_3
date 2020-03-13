@@ -3,7 +3,30 @@
     ViewData["Title"] = "Index";
 }
 
-@foreach (Park park in Model)
+@for (int i = 0; i < Model.Count - 1; i++)
+{
+    string divBgClass;
+    if (i % 2 == 0)
+    {
+        divBgClass = "index-container-light";
+    }
+    else
+    {
+         divBgClass = "index-container-dark";
+    }
+    <div class="index @divBgClass">
+        <a asp-controller="Parks" asp-action="Detail" asp-route-code="@Model[i].ParkCode"><img src="~/img/parks/@(Model[i].ParkCode).jpg" /></a>
+        <div>
+            <a asp-controller="Parks" asp-action="Detail" asp-route-code="@Model[i].ParkCode">
+                <h2>@Model[i].ParkName</h2>
+            </a>
+            <h6>@Model[i].State</h6>
+            <p>@Model[i].ParkDescription</p>
+        </div>
+    </div>
+}
+
+@*@foreach (Park park in Model)
 {
     <div class="index">
         <a asp-controller="Parks" asp-action="Detail" asp-route-code="@park.ParkCode"><img src="~/img/parks/@(park.ParkCode).jpg" /></a>
@@ -15,5 +38,5 @@
             <p>@park.ParkDescription</p>
         </div>
     </div>
-}
+}*@
 
