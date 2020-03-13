@@ -25,12 +25,14 @@ namespace NPGeekEF
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Configure cookie policy
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
             }
             );
+
             // Add dependency injection for DbContext and DAOs
             services.AddDbContext<NpGeekContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddTransient<IParksDAO, ParksEFCoreDAO>();
@@ -38,16 +40,18 @@ namespace NPGeekEF
             services.AddTransient<ISurveyDAO, SurveyEFCoreDAO>();
 
             // Add dependency injection for User Authentication
-            services.AddTransient<IUserDAO, UserSqlDAO>(p => new UserSqlDAO(Configuration.GetConnectionString("Default")));
+            services.AddTransient<IUserDAO, UserSqlDAO>(p => new UserSqlDAO(Configuration.GetConnectionString("User")));
             services.AddHttpContextAccessor();
             services.AddScoped<IAuthProvider, SessionAuthProvider>();
-
+           
+            // Additional setup for TEAuthLib
             AuthorizeAttribute.Options = new AuthorizeAttribute.AuthorizeAttributeOptions()
             {
                 LoginRedirectAction = "Login",
                 LoginRedirectController = "Account"
             };
 
+            // Globally add Anti Forgery Token requirement
             services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddDistributedMemoryCache();

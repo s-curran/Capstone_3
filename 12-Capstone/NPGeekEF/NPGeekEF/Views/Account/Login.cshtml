@@ -1,0 +1,52 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+@{
+    // TODO 04 (View): Create the Login View for the form
+}
+<h2>Login</h2>
+<form asp-controller="account" asp-action="login" method="post">
+    <div class="field-container">
+        <label class="form-label" asp-for="Email">Email: </label>
+        <input class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="Password">Password: </label>
+        <input class="form-control" type="password" asp-for="Password" />
+        <span asp-validation-for="Password" class="error"></span>
+    </div>
+    <div class="form-button">
+        <input type="submit" value="Login" class="btn btn-primary" />
+    </div>
+</form>
+
+<hr />
+<h5>Test Account Credentials</h5>
+<h6>Admin Account</h6>
+<p>Email: NPGeekAdmin@te.com Password: adminpassword123</p>
+<h6>User Account</h6>
+<p>Email: NPGeekUser@te.com Password: userpassword123</p>
+@*<table>
+        <tr>
+            <td><label asp-for="Email"></label></td>
+            <td>
+                <input type="email" asp-for="Email" />
+                <span asp-validation-for="Email"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Password"></label></td>
+            <td>
+                <input type="password" asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </td>
+        </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" value="Login" class="btn btn-primary" />
+        </td>
+    </tr>
+    </table>*@

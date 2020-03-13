@@ -28,15 +28,29 @@ namespace NPGeekEF.Controllers
             vm.Park = park;
             vm.SetAlert(park);
 
-            string temp = HttpContext.Session.GetString("TempChoice");
+            string tempChoice;
+
+            if (IsLoggedIn)
+            {
+                if (tempPref != null)
+                {
+                    authProvider.UpdateTempPref(tempPref);
+                }
+                User user = authProvider.GetCurrentUser();
+
+                tempChoice = user.TempPref;
+            }
+            else
+            {
+                string temp = HttpContext.Session.GetString("TempChoice");
+
+                HttpContext.Session.SetString("TempChoice", tempPref ?? temp ?? "F");
+
+                tempChoice = HttpContext.Session.GetString("TempChoice");
+            }
 
 
-            HttpContext.Session.SetString("TempChoice", tempPref ?? temp ?? "F");
-
-
-            temp = HttpContext.Session.GetString("TempChoice");
-
-            if (temp == "C")
+            if (tempChoice == "C")
             {
                 vm.IsCelsius = true;
             }
