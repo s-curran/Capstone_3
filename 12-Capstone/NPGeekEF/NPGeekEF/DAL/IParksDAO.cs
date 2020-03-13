@@ -11,5 +11,6 @@ namespace NPGeekEF.DAL
         IList<Park> GetAllParks();
 
         Park GetParkByCode(string parkCode);
+        bool AddNewPark(Park park);
     }
 }

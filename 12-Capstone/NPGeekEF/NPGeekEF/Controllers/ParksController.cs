@@ -66,5 +66,26 @@ namespace NPGeekEF.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult AddPark()
+        {
+            ViewData["states"] = SelectListHelper.stateList;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddPark(Park park)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(park);
+            }
+
+            bool success = ParksDAO.AddNewPark(park);
+            TempData["message"] = success;
+
+            return RedirectToAction();
+        }
     }
 }

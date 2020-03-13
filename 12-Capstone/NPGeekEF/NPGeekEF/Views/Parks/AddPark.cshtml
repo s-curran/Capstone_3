@@ -1,0 +1,86 @@
+﻿@model Park  
+@{
+    ViewData["Title"] = "AddPark";
+    SelectList states = ViewData["states"] as SelectList;
+}
+
+<h1>Add Park</h1>
+
+<form asp-controller="Parks" asp-action="AddPark" method="post">
+    <div class="field-container">
+        <label class="form-label" asp-for="ParkCode">Park Code: </label>
+        <input class="form-control" asp-for="ParkCode" />
+        <span asp-validation-for="ParkCode" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="ParkName">Park Name: </label>
+        <input class="form-control" asp-for="ParkName" />
+        <span asp-validation-for="ParkName" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="State">State: </label>
+        <select class="form-control" asp-for="State" asp-items="states"></select>
+        <span asp-validation-for="State" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="Acreage">Acreage: </label>
+        <input class="form-control" asp-for="Acreage" />
+        <span asp-validation-for=" Acreage" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="ElevationInFeet">Elevation: </label>
+        <input class="form-control" asp-for="ElevationInFeet" />
+        <span asp-validation-for="ElevationInFeet" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="MilesOfTrail">Miles of Trail: </label>
+        <input class="form-control" asp-for="MilesOfTrail" />
+        <span asp-validation-for="MilesOfTrail" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="NumberOfCampsites">Number of Campsites: </label>
+        <input class="form-control" asp-for="NumberOfCampsites" />
+        <span asp-validation-for="NumberOfCampsites" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="Climate">Climate: </label>
+        <input class="form-control" asp-for="Climate" />
+        <span asp-validation-for="Climate" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="YearFounded">Year Founded: </label>
+        <input class="form-control" asp-for="YearFounded" />
+        <span asp-validation-for="YearFounded" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="AnnualVisitorCount">Annual Visitors: </label>
+        <input class="form-control" asp-for="AnnualVisitorCount" />
+        <span asp-validation-for="AnnualVisitorCount" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="EntryFee">Entry Fee: </label>
+        <input class="form-control" asp-for="EntryFee" />
+        <span asp-validation-for="EntryFee" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="NumberOfAnimalSpecies">Number of Animal Species: </label>
+        <input class="form-control" asp-for="NumberOfAnimalSpecies" />
+        <span asp-validation-for="NumberOfAnimalSpecies" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="InspirationalQuote">Quote: </label>
+        <input class="form-control" asp-for="InspirationalQuote" />
+        <span asp-validation-for="InspirationalQuote" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="InspirationalQuoteSource">Quote Source: </label>
+        <input class="form-control" asp-for="InspirationalQuoteSource" />
+        <span asp-validation-for="InspirationalQuoteSource" class="error"></span>
+    </div>
+    <div class="field-container">
+        <label class="form-label" asp-for="ParkDescription">Description: </label>
+        <input class="form-control" asp-for="ParkDescription" />
+        <span asp-validation-for="ParkDescription" class="error"></span>
+    </div>
+   
+</form>
