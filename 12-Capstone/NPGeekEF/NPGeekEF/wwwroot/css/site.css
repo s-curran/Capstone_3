@@ -222,16 +222,17 @@ input[type="radio"] {
     box-shadow: inset 0 0 0 .4em white, 0 0 0 .3em;
     transition: .2s;
     cursor: pointer;
-    color: #363945;
+    color: #5e3b04;
 }
 
     input[type="radio"]:hover, input[type="radio"]:checked {
-        background: #363945;
+        background: #5e3b04;
         box-shadow: inset 0 0 0 .6em white, 0 0 0 .3em;
     }
 
     input[type="radio"]:checked {
         background: #56be8e;
+        color: #5e3b04;
         box-shadow: inset 0 0 0 .4em white, 0 0 0 .3em #56be8e;
     }
 
@@ -240,7 +241,7 @@ input[type="radio"] {
     }
 
 
-.radio-group input[type=radio] {
+/*.radio-group input[type=radio] {
     position: absolute;
     visibility: hidden;
     display: none;
@@ -269,7 +270,7 @@ input[type="radio"] {
     margin: 20px;
     border-radius: 10px;
     overflow: hidden;
-}
+}*/
 
 form {
     display: block;
