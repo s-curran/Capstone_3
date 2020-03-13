@@ -272,25 +272,26 @@ form {
     margin: 10px auto;
 }
 
-input.convert {
+input#convert {
     background-color: #fff;
     padding: 5px 10px;
     color: #fff;
     border-radius: 5%;
     border: 5px solid var(--gray);
+    max-width: 100%;
 }
 
-    input.convert[type=submit] {
+    input#convert[type=submit] {
         font-weight: bolder;
         color: var(--gray);
     }
 
-    input.convert:hover {
+    input#convert:hover {
         background-color: var(--gray);
         border: 5px solid #fff;
     }
 
-    input.convert[type=submit]:hover {
+    input#convert[type=submit]:hover {
         font-weight: bolder;
         color: #fff;
     }

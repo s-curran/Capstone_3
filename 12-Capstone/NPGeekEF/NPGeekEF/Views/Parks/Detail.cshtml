@@ -75,13 +75,13 @@
     {
         <input type="hidden" name="code" id="code" value="@Model.Park.ParkCode"/>
         <input type="hidden" name="tempPref" id="tempPref" value="F"/>
-        <input class="convert" type="submit" value="Change to Farenheit" />
+        <input id="convert" type="submit" value="Change to Farenheit" />
     }
     else
     {
         <input type="hidden" name="code" id="code" value="@Model.Park.ParkCode" />
         <input type="hidden" name="tempPref" id="tempPref" value="C"/>
-        <input class="convert" type="submit" value="Change to Celsius" />
+        <input id="convert" type="submit" value="Change to Celsius" />
     }
 </form>
 </div>
