@@ -83,9 +83,13 @@ namespace NPGeekEF.Controllers
             }
 
             bool success = ParksDAO.AddNewPark(park);
-            TempData["message"] = success;
+            if(success == true)
+            {
+                TempData["message"] = "Your park has been added!";
+            }
+            
 
-            return RedirectToAction();
+            return RedirectToAction("Index");
         }
     }
 }

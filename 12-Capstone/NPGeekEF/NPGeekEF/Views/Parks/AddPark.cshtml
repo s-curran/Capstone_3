@@ -1,7 +1,7 @@
 ﻿@model Park  
 @{
     ViewData["Title"] = "AddPark";
-    SelectList states = ViewData["states"] as SelectList;
+    List<SelectListItem> states = ViewData["states"] as List<SelectListItem>;
 }
 
 <h1>Add Park</h1>
@@ -82,5 +82,7 @@
         <input class="form-control" asp-for="ParkDescription" />
         <span asp-validation-for="ParkDescription" class="error"></span>
     </div>
-   
+    <div class="form-button">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
 </form>
