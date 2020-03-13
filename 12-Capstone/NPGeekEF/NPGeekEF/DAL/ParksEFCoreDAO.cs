@@ -23,5 +23,19 @@ namespace NPGeekEF.DAL
         {
             return dbContext.Park.Where(p => p.ParkCode == parkCode).SingleOrDefault();
         }
+
+        public bool AddNewPark(Park park)
+        {
+            try
+            {
+                dbContext.Add(park);
+                dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
