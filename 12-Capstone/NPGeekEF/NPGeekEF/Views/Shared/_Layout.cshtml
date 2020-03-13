@@ -27,7 +27,7 @@
                             <a class="nav-link text-dark" asp-controller="Survey" asp-action="Index">Survey</a>
                         </li>
                         @{ User user = ViewData["CurrentUser"] as User;
-                            if (ViewData["CurrentUser"] != null && user.Role.ToLower().ToString() == "admin")
+                            if (ViewData["CurrentUser"] != null && user.Role == "Admin")
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-controller="Parks" asp-action="AddPark">Add New Park</a>
