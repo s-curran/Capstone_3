@@ -15,12 +15,20 @@ namespace NPGeekEF.Controllers
         {
 
         }
+
         [Authorize]  //Must be logged in to see Account/Index page
         [HttpGet]
         public IActionResult Index()
         {
-            var user = authProvider.GetCurrentUser();
+            User user = authProvider.GetCurrentUser();
             return View(user);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Index(User user)
+        {
+            throw new NotImplementedException();
         }
 
         [HttpGet]
