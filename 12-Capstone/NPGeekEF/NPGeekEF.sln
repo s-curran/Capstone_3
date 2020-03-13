@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NPGeekEF", "NPGeekEF\NPGeekEF.csproj", "{F93279FD-6F08-41BA-8ABC-DA28F048F1DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TE.AuthLib", "..\..\..\danielfries-c\module-3\11-User-Authentication\student-lecture\TE.AuthLib\TE.AuthLib\TE.AuthLib.csproj", "{F78ED0E7-AB60-4666-99DD-AFB2F74EA9C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TE.AuthLib", "TE.AuthLib\TE.AuthLib.csproj", "{76332C94-B47F-4BC0-B7E2-4BE829368B5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{F93279FD-6F08-41BA-8ABC-DA28F048F1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F93279FD-6F08-41BA-8ABC-DA28F048F1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F93279FD-6F08-41BA-8ABC-DA28F048F1DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F78ED0E7-AB60-4666-99DD-AFB2F74EA9C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F78ED0E7-AB60-4666-99DD-AFB2F74EA9C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F78ED0E7-AB60-4666-99DD-AFB2F74EA9C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F78ED0E7-AB60-4666-99DD-AFB2F74EA9C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76332C94-B47F-4BC0-B7E2-4BE829368B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76332C94-B47F-4BC0-B7E2-4BE829368B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76332C94-B47F-4BC0-B7E2-4BE829368B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76332C94-B47F-4BC0-B7E2-4BE829368B5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
