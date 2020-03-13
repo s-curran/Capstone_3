@@ -29,6 +29,7 @@ namespace NPGeekEF.Controllers
         [HttpPost]
         public IActionResult Index(AccountIndexViewModel vm)
         {
+            authProvider.UpdateTempPref(vm.TempPref);
             vm.User = authProvider.GetCurrentUser();
             return View(vm);
         }

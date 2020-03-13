@@ -86,6 +86,7 @@ header {
 nav.navbar-light {
     background-color: var(--light-gray);
 }
+
 .header-img {
     max-width: 30%;
     margin-left: 10%;
@@ -169,9 +170,12 @@ ul {
         max-width: 50%;
         margin: 10px;
     }
-    
-    .index > a > img {
+
+    .index > div > a > img {
         border-radius: 12px;
+    }
+    .index-img-div {
+        width: 500px;
     }
 
 div.index-container-light {

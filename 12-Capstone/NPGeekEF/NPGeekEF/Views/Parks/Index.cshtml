@@ -15,7 +15,9 @@
          divBgClass = "index-container-dark";
     }
     <div class="index @divBgClass">
-        <a asp-controller="Parks" asp-action="Detail" asp-route-code="@Model[i].ParkCode"><img src="~/img/parks/@(Model[i].ParkCode).jpg" /></a>
+        <div class="index-img-div">
+            <a asp-controller="Parks" asp-action="Detail" asp-route-code="@Model[i].ParkCode"><img src="~/img/parks/@(Model[i].ParkCode).jpg" /></a>
+        </div>
         <div>
             <a asp-controller="Parks" asp-action="Detail" asp-route-code="@Model[i].ParkCode">
                 <h2>@Model[i].ParkName</h2>
